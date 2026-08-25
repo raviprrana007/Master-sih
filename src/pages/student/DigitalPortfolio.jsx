@@ -52,7 +52,7 @@ export default function DigitalPortfolio() {
         <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
           <Avatar name={currentUser?.name} color={currentUser?.color} size="2xl" />
           <div style={{ flex: 1, minWidth: 200 }}>
-            <h1 style={{ margin: '0 0 4px', fontSize: '1.75rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>
+            <h1 style={{ margin: '0 0 4px', fontSize: '1.75rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
               {currentUser?.name}
             </h1>
             <div style={{ fontSize: '1rem', color: '#3B82F6', marginBottom: 8 }}>{currentUser?.title}</div>

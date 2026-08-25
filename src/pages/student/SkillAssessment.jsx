@@ -51,7 +51,7 @@ export default function SkillAssessment() {
     return (
       <div style={{ maxWidth: 800, margin: '0 auto' }}>
         <div style={{ marginBottom: '2rem' }}>
-          <h1 style={{ margin: '0 0 8px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>
+          <h1 style={{ margin: '0 0 8px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
             Skill Assessment
           </h1>
           <p style={{ margin: 0, color: '#64748b' }}>Take a 10-question quiz to assess and verify your skills.</p>
@@ -173,7 +173,7 @@ export default function SkillAssessment() {
                 onClick={() => handleAnswer(currentQ, i)}
                 style={{
                   padding: '0.875rem 1rem', borderRadius: '0.625rem', border: 'none',
-                  cursor: 'pointer', textAlign: 'left', fontFamily: 'Plus Jakarta Sans, sans-serif',
+                  cursor: 'pointer', textAlign: 'left', fontFamily: 'Inter, sans-serif',
                   fontSize: '0.875rem', transition: 'all 0.15s',
                   background: answers[currentQ] === i ? `${selectedCat.color}15` : '#0A0F18',
                   border: `1px solid ${answers[currentQ] === i ? selectedCat.color + '60' : '#1e293b'}`,
@@ -237,7 +237,7 @@ export default function SkillAssessment() {
           }}>
             {result.pct >= 70 ? '🎉' : result.pct >= 50 ? '💪' : '📚'}
           </div>
-          <h2 style={{ margin: '0 0 8px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>
+          <h2 style={{ margin: '0 0 8px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
             {result.score}/{result.total} Correct
           </h2>
           <div style={{ fontSize: '1rem', color: selectedCat.color, fontWeight: 600, marginBottom: 4 }}>
@@ -250,7 +250,7 @@ export default function SkillAssessment() {
             padding: '0.5rem 1.5rem', borderRadius: '2rem',
             background: `${selectedCat.color}15`, border: `1px solid ${selectedCat.color}30`,
             fontSize: '1.75rem', fontWeight: 800, color: selectedCat.color,
-            fontFamily: 'Syne, sans-serif',
+            fontFamily: 'Inter, sans-serif',
           }}>
             {result.pct}%
           </div>

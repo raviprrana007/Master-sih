@@ -8,7 +8,7 @@ export default function ResearchPage() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
-          <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>Research Projects</h1>
+          <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>Research Projects</h1>
           <p style={{ margin: 0, color: '#64748b' }}>Ongoing and proposed research collaborations</p>
         </div>
         <button className="btn-primary" style={{ background: '#10B981' }}>+ New Proposal</button>

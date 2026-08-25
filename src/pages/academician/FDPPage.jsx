@@ -8,7 +8,7 @@ export default function FDPPage() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       <div>
-        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>Faculty Development Programs</h1>
+        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>Faculty Development Programs</h1>
         <p style={{ margin: 0, color: '#64748b' }}>Upskill and stay current with industry and pedagogy trends</p>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem' }}>

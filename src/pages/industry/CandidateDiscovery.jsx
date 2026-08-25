@@ -16,7 +16,7 @@ export default function CandidateDiscovery() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       <div>
-        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>Discover Candidates</h1>
+        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>Discover Candidates</h1>
         <p style={{ margin: 0, color: '#64748b' }}>AI-ranked student profiles matching your requirements</p>
       </div>
       <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>

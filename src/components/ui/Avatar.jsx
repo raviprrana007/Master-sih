@@ -29,7 +29,7 @@ export function Avatar({ name, color = '#3B82F6', size = 'md', src = null }) {
         border: `1.5px solid ${color}40`,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         flexShrink: 0, color: color, fontWeight: 600, fontSize: s.font,
-        fontFamily: 'Plus Jakarta Sans, sans-serif',
+        fontFamily: 'Inter, sans-serif',
       }}
     >
       {getInitials(name)}

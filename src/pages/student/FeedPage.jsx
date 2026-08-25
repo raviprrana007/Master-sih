@@ -24,7 +24,7 @@ export default function FeedPage() {
   return (
     <div style={{ maxWidth: 720, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       <div>
-        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>
+        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
           Community Feed
         </h1>
         <p style={{ margin: 0, color: '#64748b' }}>Stay updated with industry insights, opportunities, and achievements</p>
@@ -68,7 +68,7 @@ export default function FeedPage() {
               background: filter === f ? '#3B82F6' : '#141D2A',
               color: filter === f ? 'white' : '#94a3b8',
               border: `1px solid ${filter === f ? '#3B82F6' : '#1e293b'}`,
-              fontFamily: 'Plus Jakarta Sans, sans-serif',
+              fontFamily: 'Inter, sans-serif',
             }}
           >
             {f}

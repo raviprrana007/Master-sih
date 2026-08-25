@@ -17,7 +17,7 @@ export default function LearningPage() {
   return (
     <div style={{ maxWidth: 1000, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       <div>
-        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>
+        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
           Learning Paths
         </h1>
         <p style={{ margin: 0, color: '#64748b' }}>Curated courses to close your skill gaps and advance your career</p>
@@ -40,7 +40,7 @@ export default function LearningPage() {
               style={{
                 padding: '0.375rem 0.875rem', borderRadius: '2rem', border: 'none',
                 cursor: 'pointer', fontSize: '0.8rem', fontWeight: 500,
-                transition: 'all 0.15s', fontFamily: 'Plus Jakarta Sans, sans-serif',
+                transition: 'all 0.15s', fontFamily: 'Inter, sans-serif',
                 background: filter === f ? '#3B82F6' : '#141D2A',
                 color: filter === f ? 'white' : '#94a3b8',
                 border: `1px solid ${filter === f ? '#3B82F6' : '#1e293b'}`,

@@ -22,7 +22,7 @@ export default function NetworkDiscover() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       <div>
-        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>
+        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
           Discover People
         </h1>
         <p style={{ margin: 0, color: '#64748b' }}>AI-matched connections relevant to your career journey</p>
@@ -50,7 +50,7 @@ export default function NetworkDiscover() {
                 background: filter === f ? '#3B82F6' : '#141D2A',
                 color: filter === f ? 'white' : '#94a3b8',
                 border: `1px solid ${filter === f ? '#3B82F6' : '#1e293b'}`,
-                fontFamily: 'Plus Jakarta Sans, sans-serif',
+                fontFamily: 'Inter, sans-serif',
               }}
             >
               {f}

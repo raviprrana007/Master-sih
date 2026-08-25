@@ -47,7 +47,7 @@ export default function SkillAnalytics() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
         <div>
-          <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>Skill Analytics</h1>
+          <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>Skill Analytics</h1>
           <p style={{ margin: 0, color: '#64748b' }}>Analyze institutional skill gaps and emerging trends</p>
         </div>
         <button className="btn-primary" style={{ background: '#3B82F6' }}>Generate Report</button>

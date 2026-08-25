@@ -78,7 +78,7 @@ export default function CareerIntelligence() {
             <Sparkles size={18} color="#8B5CF6" />
           </div>
           <div>
-            <h1 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>
+            <h1 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
               Career Intelligence
             </h1>
             <div style={{ fontSize: '0.75rem', color: '#8B5CF6' }}>AI-powered career advisor</div>
@@ -151,7 +151,7 @@ export default function CareerIntelligence() {
                 padding: '0.375rem 0.75rem', borderRadius: '2rem',
                 border: '1px solid #243044', background: '#0A0F18',
                 color: '#94a3b8', fontSize: '0.75rem', cursor: 'pointer',
-                transition: 'all 0.15s', fontFamily: 'Plus Jakarta Sans, sans-serif',
+                transition: 'all 0.15s', fontFamily: 'Inter, sans-serif',
                 whiteSpace: 'nowrap',
               }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = '#3B82F6'; e.currentTarget.style.color = '#3B82F6'; }}

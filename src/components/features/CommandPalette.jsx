@@ -89,7 +89,7 @@ export function CommandPalette({ isOpen, onClose }) {
             placeholder="Search internships, jobs, people, courses..."
             style={{
               flex: 1, background: 'none', border: 'none', outline: 'none',
-              fontSize: '1rem', color: '#e2e8f0', fontFamily: 'Plus Jakarta Sans, sans-serif',
+              fontSize: '1rem', color: '#e2e8f0', fontFamily: 'Inter, sans-serif',
             }}
           />
           <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#64748b' }}>

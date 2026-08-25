@@ -10,7 +10,7 @@ export default function FacultyProfile() {
         <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
           <Avatar name={currentUser?.name} color={currentUser?.color} size="2xl" />
           <div style={{ flex: 1 }}>
-            <h1 style={{ margin: '0 0 4px', fontSize: '1.75rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>{currentUser?.name}</h1>
+            <h1 style={{ margin: '0 0 4px', fontSize: '1.75rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>{currentUser?.name}</h1>
             <div style={{ fontSize: '1rem', color: '#10B981', marginBottom: 4 }}>{currentUser?.title}</div>
             <div style={{ fontSize: '0.875rem', color: '#64748b', marginBottom: 8 }}>{currentUser?.department} • {currentUser?.institution}</div>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 12 }}>

@@ -8,7 +8,7 @@ export function Tabs({ tabs, active, onChange }) {
           style={{
             padding: '0.5rem 1rem', borderRadius: '0.5rem', border: 'none',
             cursor: 'pointer', fontSize: '0.875rem', fontWeight: 500,
-            transition: 'all 0.2s', fontFamily: 'Plus Jakarta Sans, sans-serif',
+            transition: 'all 0.2s', fontFamily: 'Inter, sans-serif',
             background: active === tab.value ? '#141D2A' : 'transparent',
             color: active === tab.value ? '#e2e8f0' : '#64748b',
             boxShadow: active === tab.value ? '0 1px 3px rgba(0,0,0,0.2)' : 'none',

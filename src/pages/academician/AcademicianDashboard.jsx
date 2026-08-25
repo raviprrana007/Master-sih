@@ -38,7 +38,7 @@ export default function AcademicianDashboard() {
     <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
       <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         <div>
-          <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>
+          <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
             {getGreeting(currentUser?.name?.split(' ')[0])} 👋
           </h1>
           <p style={{ margin: 0, fontSize: '0.875rem', color: '#64748b' }}>

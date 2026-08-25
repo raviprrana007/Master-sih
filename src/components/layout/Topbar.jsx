@@ -104,7 +104,7 @@ export function Topbar({ sidebarWidth }) {
         {/* Page title */}
         <h1 style={{
           margin: 0, fontSize: '1rem', fontWeight: 600, color: 'var(--text-1)',
-          fontFamily: 'Syne, sans-serif', whiteSpace: 'nowrap',
+          fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap',
         }}>
           {pageTitle}
         </h1>
@@ -241,7 +241,7 @@ function MenuItem({ icon: Icon, label, onClick, danger, rightEl }) {
         padding: '0.5rem 0.75rem', borderRadius: '0.5rem', border: 'none',
         cursor: 'pointer', background: 'transparent',
         color: danger ? '#EF4444' : 'var(--text-2)', fontSize: '0.875rem',
-        transition: 'all 0.15s', fontFamily: 'Plus Jakarta Sans, sans-serif',
+        transition: 'all 0.15s', fontFamily: 'Inter, sans-serif',
       }}
       onMouseEnter={e => {
         e.currentTarget.style.background = danger ? 'rgba(239,68,68,0.1)' : 'var(--card-hover)';

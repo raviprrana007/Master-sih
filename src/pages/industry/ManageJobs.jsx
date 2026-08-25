@@ -23,7 +23,7 @@ export default function ManageJobs() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
-          <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>Manage Jobs</h1>
+          <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>Manage Jobs</h1>
           <p style={{ margin: 0, color: '#64748b' }}>Active job postings at TechNova Solutions</p>
         </div>
         <button onClick={() => navigate('/post')} className="btn-primary" style={{ background: '#06B6D4' }}>

@@ -154,7 +154,7 @@ export function Sidebar({ collapsed, onToggle }) {
             <Sparkles size={14} color={roleColor} />
           </div>
           {!collapsed && (
-            <span style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-1)', fontFamily: 'Syne, sans-serif', whiteSpace: 'nowrap' }}>
+            <span style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-1)', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>
               SkillBridge
             </span>
           )}

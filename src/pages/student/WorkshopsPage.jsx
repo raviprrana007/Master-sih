@@ -4,7 +4,7 @@ export default function WorkshopsPage() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       <div>
-        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>
+        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
           Workshops & Events
         </h1>
         <p style={{ margin: 0, color: '#64748b' }}>Upskill through industry-led workshops and tech events</p>

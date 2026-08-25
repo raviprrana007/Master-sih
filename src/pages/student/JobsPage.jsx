@@ -36,7 +36,7 @@ export default function JobsPage() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       <div>
-        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>
+        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
           Jobs
         </h1>
         <p style={{ margin: 0, color: '#64748b' }}>Full-time roles matching your skills and experience level</p>
@@ -75,7 +75,7 @@ export default function JobsPage() {
                   background: workMode === m ? '#3B82F6' : '#141D2A',
                   color: workMode === m ? 'white' : '#94a3b8',
                   border: `1px solid ${workMode === m ? '#3B82F6' : '#1e293b'}`,
-                  fontFamily: 'Plus Jakarta Sans, sans-serif', transition: 'all 0.15s',
+                  fontFamily: 'Inter, sans-serif', transition: 'all 0.15s',
                 }}
               >
                 {m}

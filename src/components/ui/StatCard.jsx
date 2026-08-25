@@ -12,7 +12,7 @@ export function StatCard({ label, value, sub, icon: Icon, color = '#3B82F6', tre
         {label}
       </span>
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-        <span style={{ fontSize: '1.75rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>
+        <span style={{ fontSize: '1.75rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
           {value}
         </span>
         {trend && (

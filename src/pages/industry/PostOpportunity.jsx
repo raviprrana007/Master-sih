@@ -18,7 +18,7 @@ export default function PostOpportunity() {
         <div style={{ width: 80, height: 80, borderRadius: '50%', background: 'rgba(16,185,129,0.15)', border: '2px solid rgba(16,185,129,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
           <CheckCircle size={36} color="#10B981" />
         </div>
-        <h2 style={{ margin: '0 0 8px', color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>Opportunity Posted!</h2>
+        <h2 style={{ margin: '0 0 8px', color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>Opportunity Posted!</h2>
         <p style={{ color: '#64748b' }}>Your {type} listing is now live and visible to matching candidates.</p>
       </div>
     );
@@ -27,7 +27,7 @@ export default function PostOpportunity() {
   return (
     <div style={{ maxWidth: 700, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       <div>
-        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>Post Opportunity</h1>
+        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>Post Opportunity</h1>
         <p style={{ margin: 0, color: '#64748b' }}>Reach thousands of qualified candidates</p>
       </div>
       <div style={{ display: 'flex', gap: 8 }}>
@@ -35,7 +35,7 @@ export default function PostOpportunity() {
           <button key={t} onClick={() => setType(t)} style={{
             padding: '0.5rem 1.5rem', borderRadius: '0.5rem', cursor: 'pointer', fontWeight: 500, fontSize: '0.875rem',
             background: type === t ? '#06B6D4' : '#141D2A', color: type === t ? 'white' : '#94a3b8',
-            border: `1px solid ${type === t ? '#06B6D4' : '#1e293b'}`, fontFamily: 'Plus Jakarta Sans, sans-serif', transition: 'all 0.15s',
+            border: `1px solid ${type === t ? '#06B6D4' : '#1e293b'}`, fontFamily: 'Inter, sans-serif', transition: 'all 0.15s',
           }}>
             {t.charAt(0).toUpperCase() + t.slice(1)}
           </button>
@@ -68,7 +68,7 @@ export default function PostOpportunity() {
               <button key={m} type="button" onClick={() => setForm(p => ({ ...p, workMode: m }))} style={{
                 padding: '0.4rem 1rem', borderRadius: '0.5rem', cursor: 'pointer', fontSize: '0.8rem',
                 background: form.workMode === m ? '#06B6D4' : 'transparent', color: form.workMode === m ? 'white' : '#94a3b8',
-                border: `1px solid ${form.workMode === m ? '#06B6D4' : '#1e293b'}`, fontFamily: 'Plus Jakarta Sans, sans-serif',
+                border: `1px solid ${form.workMode === m ? '#06B6D4' : '#1e293b'}`, fontFamily: 'Inter, sans-serif',
               }}>{m}</button>
             ))}
           </div>

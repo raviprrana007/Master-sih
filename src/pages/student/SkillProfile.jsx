@@ -52,7 +52,7 @@ export default function SkillProfile() {
     <div style={{ maxWidth: 1000, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
-          <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>
+          <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
             Skill Profile
           </h1>
           <p style={{ margin: 0, color: '#64748b' }}>Your verified skills and career compatibility</p>
@@ -171,7 +171,7 @@ export default function SkillProfile() {
                   style={{
                     padding: '4px 12px', borderRadius: 6, border: '1px solid #1e293b',
                     background: '#0A0F18', color: '#94a3b8', cursor: 'pointer', fontSize: '0.8rem',
-                    transition: 'all 0.15s', fontFamily: 'Plus Jakarta Sans, sans-serif',
+                    transition: 'all 0.15s', fontFamily: 'Inter, sans-serif',
                   }}
                   onMouseEnter={e => { e.currentTarget.style.background = '#141D2A'; e.currentTarget.style.color = '#e2e8f0'; }}
                   onMouseLeave={e => { e.currentTarget.style.background = '#0A0F18'; e.currentTarget.style.color = '#94a3b8'; }}

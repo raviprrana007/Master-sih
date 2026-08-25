@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @import "tailwindcss";
 
@@ -14,8 +14,8 @@
   --color-brand-cyan: #06B6D4;
   --color-brand-violet: #8B5CF6;
 
-  --font-family-display: 'Syne', sans-serif;
-  --font-family-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-family-display: 'Inter', sans-serif;
+  --font-family-sans: 'Inter', sans-serif;
   --font-family-mono: 'JetBrains Mono', monospace;
 }
 
@@ -37,21 +37,27 @@
 /* ── Theme CSS Variables ─────────────────────────────── */
 :root {
   /* Light mode (default) */
-  --bg-primary:   #F8FAFC;
-  --bg-secondary: #F1F5F9;
+  --bg-primary:   #F5F7FA;
+  --bg-secondary: #EEF2F7;
   --surface:      #FFFFFF;
-  --surface-el:   #F8FAFC;
-  --border:       #E2E8F0;
-  --border-mid:   #CBD5E1;
-  --text-1:       #0F172A;
-  --text-2:       #475569;
-  --text-3:       #94A3B8;
+  --surface-el:   #F0F4F9;
+  --border:       #DDE3ED;
+  --border-mid:   #C4CEDC;
+  --text-1:       #0D1117;
+  --text-2:       #3D5066;
+  --text-3:       #7A8FA6;
   --sidebar-bg:   #FFFFFF;
-  --topbar-bg:    rgba(255,255,255,0.85);
-  --input-bg:     #F1F5F9;
-  --card-hover:   #F1F5F9;
-  --scrollbar-track: #E2E8F0;
-  --scrollbar-thumb: #CBD5E1;
+  --topbar-bg:    rgba(255,255,255,0.90);
+  --input-bg:     #EEF2F7;
+  --card-hover:   #EEF2F7;
+  --scrollbar-track: #DDE3ED;
+  --scrollbar-thumb: #C4CEDC;
+  /* Accent (can be overridden) */
+  --accent:       #2563EB;
+  --accent-light: rgba(37,99,235,0.10);
+  --accent-border: rgba(37,99,235,0.25);
+  /* Base font size */
+  --base-font-size: 14px;
 }
 
 :root.dark {
@@ -62,26 +68,35 @@
   --surface-el:   #141D2A;
   --border:       #1e293b;
   --border-mid:   #334155;
-  --text-1:       #e2e8f0;
-  --text-2:       #94a3b8;
-  --text-3:       #64748b;
+  --text-1:       #E8EDF5;
+  --text-2:       #8FA3BB;
+  --text-3:       #546578;
   --sidebar-bg:   #0A0F18;
-  --topbar-bg:    rgba(10,15,24,0.85);
+  --topbar-bg:    rgba(10,15,24,0.88);
   --input-bg:     #0A0F18;
   --card-hover:   #141D2A;
   --scrollbar-track: #0A0F18;
   --scrollbar-thumb: #243044;
+  --accent:       #3B82F6;
+  --accent-light: rgba(59,130,246,0.10);
+  --accent-border: rgba(59,130,246,0.25);
 }
 
 @layer base {
-  html { color-scheme: light; }
+  html { color-scheme: light; font-size: var(--base-font-size, 14px); }
   body {
     background-color: var(--bg-primary);
     color: var(--text-1);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
+    letter-spacing: -0.01em;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.02em;
+    color: var(--text-1);
   }
   #root {
     width: 100%;
@@ -89,7 +104,7 @@
   }
 }
 
-:root.dark html { color-scheme: dark; }
+:root.dark { color-scheme: dark; }
 
 @layer components {
   .card {
@@ -105,7 +120,7 @@
   }
 
   .btn-primary {
-    background-color: #3B82F6;
+    background-color: var(--accent);
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
@@ -117,9 +132,9 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
-  .btn-primary:hover { background-color: #60a5fa; }
+  .btn-primary:hover { filter: brightness(1.1); }
 
   .btn-secondary {
     background-color: var(--surface-el);
@@ -134,7 +149,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
   .btn-secondary:hover {
     background-color: var(--card-hover);
@@ -153,7 +168,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
   .btn-ghost:hover {
     background-color: var(--card-hover);
@@ -170,13 +185,13 @@
     width: 100%;
     outline: none;
     transition: all 0.2s;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     box-sizing: border-box;
   }
   .input::placeholder { color: var(--text-3); }
   .input:focus {
-    border-color: #3B82F6;
-    box-shadow: 0 0 0 1px rgba(59,130,246,0.3);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-light);
   }
 
   .sidebar-link {
@@ -207,9 +222,9 @@
     gap: 0.75rem;
     padding: 0.625rem 0.75rem;
     border-radius: 0.5rem;
-    color: #3B82F6;
-    background-color: rgba(59,130,246,0.1);
-    border: 1px solid rgba(59,130,246,0.2);
+    color: var(--accent);
+    background-color: var(--accent-light);
+    border: 1px solid var(--accent-border);
     font-size: 0.875rem;
     font-weight: 500;
     text-decoration: none;

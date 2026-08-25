@@ -20,7 +20,7 @@ export default function SkillGapAnalysis() {
   return (
     <div style={{ maxWidth: 1000, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       <div>
-        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>
+        <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
           Skill Gap Analysis
         </h1>
         <p style={{ margin: 0, color: '#64748b' }}>Compare your skills against industry demand</p>
@@ -54,7 +54,7 @@ export default function SkillGapAnalysis() {
             onClick={() => setSelectedCat(cat)}
             style={{
               padding: '0.5rem 1rem', borderRadius: '0.5rem', border: 'none',
-              cursor: 'pointer', fontFamily: 'Plus Jakarta Sans, sans-serif',
+              cursor: 'pointer', fontFamily: 'Inter, sans-serif',
               fontSize: '0.8rem', fontWeight: 500, transition: 'all 0.15s',
               background: selectedCat.id === cat.id ? '#3B82F6' : '#141D2A',
               color: selectedCat.id === cat.id ? 'white' : '#94a3b8',

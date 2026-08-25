@@ -55,7 +55,7 @@ export default function LoginPage() {
   return (
     <div style={{
       minHeight: '100vh', display: 'flex',
-      background: '#05070D', fontFamily: 'Plus Jakarta Sans, sans-serif',
+      background: '#05070D', fontFamily: 'Inter, sans-serif',
     }}>
       {/* Left panel */}
       <div style={{
@@ -93,7 +93,7 @@ export default function LoginPage() {
             </div>
             <span style={{
               fontSize: '2rem', fontWeight: 800, color: '#e2e8f0',
-              fontFamily: 'Syne, sans-serif',
+              fontFamily: 'Inter, sans-serif',
             }}>
               SkillBridge
             </span>
@@ -101,7 +101,7 @@ export default function LoginPage() {
 
           <h2 style={{
             fontSize: '1.75rem', fontWeight: 700, color: '#e2e8f0',
-            fontFamily: 'Syne, sans-serif', margin: '0 0 0.75rem',
+            fontFamily: 'Inter, sans-serif', margin: '0 0 0.75rem',
           }}>
             Where Talent Meets Opportunity
           </h2>
@@ -158,7 +158,7 @@ export default function LoginPage() {
                 background: 'rgba(255,255,255,0.03)', border: '1px solid #1e293b',
                 borderRadius: '0.75rem', padding: '0.75rem 1rem', textAlign: 'center',
               }}>
-                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: s.color, fontFamily: 'Syne, sans-serif' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: s.color, fontFamily: 'Inter, sans-serif' }}>
                   {s.value}
                 </div>
                 <div style={{ fontSize: '0.7rem', color: '#475569' }}>{s.label}</div>
@@ -175,7 +175,7 @@ export default function LoginPage() {
         borderLeft: '1px solid #1e293b',
       }}>
         <div style={{ width: '100%', maxWidth: 420 }}>
-          <h2 style={{ margin: '0 0 0.5rem', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Syne, sans-serif' }}>
+          <h2 style={{ margin: '0 0 0.5rem', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
             Welcome back
           </h2>
           <p style={{ margin: '0 0 2rem', fontSize: '0.875rem', color: '#64748b' }}>
@@ -197,7 +197,7 @@ export default function LoginPage() {
                     border: `1px solid ${selectedRole === role.key ? role.color : '#1e293b'}`,
                     background: selectedRole === role.key ? `${role.color}10` : 'transparent',
                     cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s',
-                    fontFamily: 'Plus Jakarta Sans, sans-serif',
+                    fontFamily: 'Inter, sans-serif',
                   }}
                 >
                   <div style={{ fontSize: '0.8rem', fontWeight: 600, color: selectedRole === role.key ? role.color : '#94a3b8' }}>
