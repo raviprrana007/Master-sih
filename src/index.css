@@ -410,9 +410,13 @@ html, body {
   max-width: 100vw;
 }
 
-img, svg, video {
+img, video {
   max-width: 100%;
   height: auto;
+}
+/* SVGs must NOT get height:auto — it collapses Recharts charts to 0 */
+svg {
+  max-width: 100%;
 }
 
 p, h1, h2, h3, h4, h5, h6, span, div {
