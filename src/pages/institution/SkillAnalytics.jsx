@@ -54,7 +54,7 @@ export default function SkillAnalytics() {
       </div>
 
       {/* Quick stats */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: '1rem' }}>
         {[
           { label: 'Avg Skill Score', value: '72/100', icon: Zap, color: '#3B82F6' },
           { label: 'Critical Gaps', value: '3', icon: AlertTriangle, color: '#EF4444' },

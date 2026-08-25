@@ -5,6 +5,7 @@ import { StatCard } from '../../components/ui/StatCard';
 import { MarketPulse } from '../../components/features/MarketPulse';
 import { ProfessorWordCard } from '../../components/features/ProfessorWord';
 import { Users, BookOpen, FlaskConical, Award, Send } from 'lucide-react';
+import { useBreakpoint } from '../../hooks/useBreakpoint';
 import { useState } from 'react';
 
 const OPPORTUNITY_CARDS = [
@@ -19,6 +20,7 @@ export default function AcademicianDashboard() {
   const { professorWords, publishProfessorWord } = useApp();
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({ message: '', topic: '' });
+  const { isMobile, isWide } = useBreakpoint();
 
   const handlePublish = () => {
     if (!form.message.trim()) return;
@@ -34,19 +36,25 @@ export default function AcademicianDashboard() {
     setShowForm(false);
   };
 
+  const showMarketPulseSidebar = isWide;
+
   return (
-    <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
-      <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div style={{ display: 'flex', gap: 'clamp(12px, 2vw, 24px)', alignItems: 'flex-start' }}>
+      <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 'clamp(12px, 2vw, 24px)' }}>
         <div>
-          <h1 style={{ margin: '0 0 4px', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
+          <h1 style={{ margin: '0 0 4px', fontSize: 'clamp(1.25rem, 3vw, 1.75rem)', fontWeight: 700, color: 'var(--text-1)', fontFamily: 'Inter, sans-serif' }}>
             {getGreeting(currentUser?.name?.split(' ')[0])} 👋
           </h1>
-          <p style={{ margin: 0, fontSize: '0.875rem', color: '#64748b' }}>
+          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--text-3)' }}>
             {currentUser?.department} • {currentUser?.institution}
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem' }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))',
+          gap: 'clamp(8px, 1.5vw, 16px)',
+        }}>
           <StatCard label="Connections" value={currentUser?.connections || 156} icon={Users} color="#10B981" />
           <StatCard label="Publications" value={currentUser?.publications || 23} icon={BookOpen} color="#3B82F6" />
           <StatCard label="Research Projects" value={currentUser?.researchProjects || 5} icon={FlaskConical} color="#8B5CF6" />
@@ -55,16 +63,20 @@ export default function AcademicianDashboard() {
 
         {/* Opportunities */}
         <div>
-          <h2 style={{ margin: '0 0 0.875rem', fontSize: '1rem', fontWeight: 600, color: '#e2e8f0' }}>Opportunities For You</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '1rem' }}>
+          <h2 style={{ margin: '0 0 0.875rem', fontSize: '1rem', fontWeight: 600, color: 'var(--text-1)' }}>Opportunities For You</h2>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 200px), 1fr))',
+            gap: 'clamp(10px, 1.5vw, 16px)',
+          }}>
             {OPPORTUNITY_CARDS.map(o => (
               <div key={o.title} className="card" style={{ padding: '1.25rem', cursor: 'pointer', border: `1px solid ${o.color}20`, transition: 'all 0.2s' }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = `${o.color}40`; e.currentTarget.style.transform = 'translateY(-2px)'; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = `${o.color}20`; e.currentTarget.style.transform = 'translateY(0)'; }}
               >
                 <div style={{ fontSize: '2rem', marginBottom: 8 }}>{o.icon}</div>
-                <h3 style={{ margin: '0 0 4px', fontSize: '0.875rem', fontWeight: 600, color: '#e2e8f0' }}>{o.title}</h3>
-                <p style={{ margin: '0 0 0.875rem', fontSize: '0.75rem', color: '#64748b' }}>{o.desc}</p>
+                <h3 style={{ margin: '0 0 4px', fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-1)' }}>{o.title}</h3>
+                <p style={{ margin: '0 0 0.875rem', fontSize: '0.75rem', color: 'var(--text-3)' }}>{o.desc}</p>
                 <span style={{ fontSize: '0.75rem', color: o.color, fontWeight: 600 }}>View →</span>
               </div>
             ))}
@@ -73,8 +85,8 @@ export default function AcademicianDashboard() {
 
         {/* Publish word */}
         <div className="card" style={{ padding: '1.25rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: showForm ? '0.875rem' : 0 }}>
-            <h3 style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#e2e8f0' }}>Words from Professors</h3>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: showForm ? '0.875rem' : 0, flexWrap: 'wrap', gap: 8 }}>
+            <h3 style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-1)' }}>Words from Professors</h3>
             <button onClick={() => setShowForm(p => !p)} className="btn-primary" style={{ background: '#10B981' }}>
               <Send size={14} /> {showForm ? 'Cancel' : 'Publish Word'}
             </button>
@@ -90,19 +102,22 @@ export default function AcademicianDashboard() {
 
         {/* Recent words */}
         <div>
-          <h2 style={{ margin: '0 0 0.875rem', fontSize: '1rem', fontWeight: 600, color: '#e2e8f0' }}>Your Published Words</h2>
+          <h2 style={{ margin: '0 0 0.875rem', fontSize: '1rem', fontWeight: 600, color: 'var(--text-1)' }}>Your Published Words</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {professorWords.filter(w => w.professor === currentUser?.name).slice(0, 3).map(w => (
               <ProfessorWordCard key={w.id} word={w} />
             ))}
           </div>
         </div>
+
+        {!showMarketPulseSidebar && <MarketPulse />}
       </div>
 
-      <div style={{ width: 320, flexShrink: 0, position: 'sticky', top: 80 }} className="market-pulse-sidebar">
-        <MarketPulse />
-      </div>
-      <style>{`@media (max-width: 1200px) { .market-pulse-sidebar { display: none !important; } }`}</style>
+      {showMarketPulseSidebar && (
+        <div style={{ width: 320, flexShrink: 0, position: 'sticky', top: 80 }}>
+          <MarketPulse />
+        </div>
+      )}
     </div>
   );
 }

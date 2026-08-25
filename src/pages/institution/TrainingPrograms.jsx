@@ -85,7 +85,7 @@ export default function TrainingPrograms() {
       </div>
 
       {/* Stats */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: '1rem' }}>
         {[
           { label: 'Total Programs', value: PROGRAMS.length, icon: BookOpen, color: '#3B82F6' },
           { label: 'Active Programs', value: activeCount, icon: Award, color: '#10B981' },

@@ -51,7 +51,7 @@ export default function PlacementAnalytics() {
       </div>
 
       {/* Stats */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: '1rem' }}>
         {[
           { label: 'Placement Rate', value: '86.2%', trend: '+2.4%', icon: TrendingUp, color: '#10B981' },
           { label: 'Students Placed', value: '198', trend: '+8', icon: Users, color: '#3B82F6' },

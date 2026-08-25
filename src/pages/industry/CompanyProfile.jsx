@@ -19,7 +19,7 @@ export default function CompanyProfile() {
           </div>
         </div>
         <p style={{ margin: '0 0 1.5rem', fontSize: '0.875rem', color: '#94a3b8', lineHeight: 1.6 }}>{currentUser?.about}</p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 160px), 1fr))', gap: '1rem' }}>
           {[{ icon: Briefcase, label: 'Open Positions', value: currentUser?.openPositions || 12 },
             { icon: Users, label: 'Connections', value: currentUser?.connections || 284 },
             { icon: Users, label: 'Company Size', value: currentUser?.companySize }].map(s => (

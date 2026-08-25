@@ -4,7 +4,7 @@ import {
   Briefcase, Building2, FileText, Bookmark, Compass, Users, GraduationCap,
   MessageSquare, Code2, Presentation, Lightbulb, Factory, Rss, MessagesSquare,
   Award, Star, Search, PlusCircle, Network, BarChart2, Settings, ChevronLeft,
-  ChevronRight, FlaskConical, UserCheck, Globe, School
+  ChevronRight, FlaskConical, UserCheck, Globe, School, X
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -111,7 +111,7 @@ const NAV_BY_ROLE = {
   institution: INSTITUTION_NAV,
 };
 
-export function Sidebar({ collapsed, onToggle }) {
+export function Sidebar({ collapsed, onToggle, onNavSelect, isMobile, onClose }) {
   const { currentUser } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -127,10 +127,15 @@ export function Sidebar({ collapsed, onToggle }) {
     return location.pathname === path;
   };
 
+  const handleNavClick = (path) => {
+    navigate(path);
+    onNavSelect?.();
+  };
+
   return (
     <div style={{
-      position: 'fixed', left: 0, top: 0, height: '100vh',
-      width: collapsed ? 64 : 256,
+      height: '100%',
+      width: '100%',
       background: 'var(--sidebar-bg)',
       borderRight: '1px solid var(--border)',
       display: 'flex', flexDirection: 'column',
@@ -159,12 +164,27 @@ export function Sidebar({ collapsed, onToggle }) {
             </span>
           )}
         </div>
-        {!collapsed && (
+        {/* Mobile: show close button */}
+        {isMobile && (
+          <button
+            onClick={onClose}
+            style={{
+              background: 'none', border: 'none', cursor: 'pointer',
+              color: 'var(--text-2)', padding: 4, display: 'flex',
+              alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+            }}
+            aria-label="Close menu"
+          >
+            <X size={18} />
+          </button>
+        )}
+        {/* Desktop collapsed: expand button */}
+        {!isMobile && !collapsed && (
           <button onClick={onToggle} className="btn-ghost" style={{ padding: 4, flexShrink: 0 }}>
             <ChevronLeft size={16} />
           </button>
         )}
-        {collapsed && (
+        {!isMobile && collapsed && (
           <button
             onClick={onToggle}
             style={{
@@ -194,11 +214,12 @@ export function Sidebar({ collapsed, onToggle }) {
                 return (
                   <button
                     key={item.path}
-                    onClick={() => navigate(item.path)}
+                    onClick={() => handleNavClick(item.path)}
                     className={active ? 'sidebar-link-active' : 'sidebar-link'}
                     style={{
                       justifyContent: collapsed ? 'center' : 'flex-start',
                       padding: collapsed ? '0.625rem' : undefined,
+                      minHeight: 44,
                     }}
                     title={collapsed ? item.label : undefined}
                   >
@@ -217,9 +238,9 @@ export function Sidebar({ collapsed, onToggle }) {
         borderTop: '1px solid var(--border)', padding: '12px 8px', flexShrink: 0,
       }}>
         <button
-          onClick={() => navigate('/settings')}
+          onClick={() => handleNavClick('/settings')}
           className={isActive('/settings') ? 'sidebar-link-active' : 'sidebar-link'}
-          style={{ justifyContent: collapsed ? 'center' : undefined }}
+          style={{ justifyContent: collapsed ? 'center' : undefined, minHeight: 44 }}
           title={collapsed ? 'Settings' : undefined}
         >
           <Settings size={16} style={{ flexShrink: 0 }} />

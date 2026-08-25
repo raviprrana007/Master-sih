@@ -48,11 +48,11 @@ export default function MyNetwork() {
       )}
 
       <div>
-        <h2 style={{ margin: '0 0 0.875rem', fontSize: '1rem', fontWeight: 600, color: '#e2e8f0' }}>
+        <h2 style={{ margin: '0 0 0.875rem', fontSize: '1rem', fontWeight: 600, color: 'var(--text-1)' }}>
           Connections ({connected.length})
         </h2>
         {connected.length > 0 ? (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: 'clamp(10px, 1.5vw, 16px)' }}>
             {connected.map(p => (
               <div key={p.id} className="card" style={{ padding: '1.25rem' }}>
                 <div style={{ display: 'flex', gap: 12, marginBottom: '0.875rem' }}>

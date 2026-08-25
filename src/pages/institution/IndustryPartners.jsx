@@ -47,7 +47,7 @@ export default function IndustryPartners() {
       </div>
 
       {/* Summary cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: '1rem' }}>
         {[
           { label: 'Total Partners', value: PARTNERS.length, icon: Building2, color: '#3B82F6' },
           { label: 'Total Hired', value: PARTNERS.reduce((a, p) => a + p.hired, 0), icon: Users, color: '#10B981' },

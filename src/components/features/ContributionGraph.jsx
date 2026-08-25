@@ -45,8 +45,8 @@ export function ContributionGraph({ userId = 'student-1' }) {
         </span>
       </div>
 
-      <div style={{ overflowX: 'auto', paddingBottom: 4 }}>
-        <div style={{ minWidth: 'max-content' }}>
+      <div className="contribution-scroll">
+        <div style={{ minWidth: 600, display: 'inline-block' }}>
           {/* Month labels */}
           <div style={{ display: 'flex', marginLeft: 28, marginBottom: 4 }}>
             {data.map((_, wi) => {

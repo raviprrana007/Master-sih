@@ -39,7 +39,7 @@ export default function ApplicationsPage() {
         <p style={{ margin: 0, color: '#64748b' }}>{applications.length} total applications</p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: '1rem' }}>
         {['Applied', 'Viewed', 'Shortlisted', 'Rejected'].map(status => {
           const s = STATUS_STYLES[status];
           const count = applications.filter(a => a.status === status).length + (status === 'Applied' ? applications.length - applications.filter(a => a.status !== 'Applied').length : 0);

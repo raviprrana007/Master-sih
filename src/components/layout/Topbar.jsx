@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Search, Bell, LogOut, User, Settings, ChevronDown, Moon, Sun } from 'lucide-react';
+import { Search, Bell, LogOut, User, Settings, ChevronDown, Moon, Sun, Menu } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useApp } from '../../context/AppContext';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -29,7 +29,6 @@ const PAGE_TITLES = {
   '/manage-jobs': 'Manage Jobs',
   '/manage-internships': 'Manage Internships',
   '/post': 'Post Opportunity',
-  '/applications': 'Applications',
   '/candidates': 'Discover Candidates',
   '/talent-network': 'Talent Network',
   '/analytics': 'Recruitment Analytics',
@@ -49,7 +48,7 @@ const PAGE_TITLES = {
   '/settings': 'Settings',
 };
 
-export function Topbar({ sidebarWidth }) {
+export function Topbar({ sidebarWidth, isMobile, onMenuClick, sidebarOpen }) {
   const { currentUser, logout } = useAuth();
   const { unreadCount, theme, setTheme } = useApp();
   const navigate = useNavigate();
@@ -98,38 +97,78 @@ export function Topbar({ sidebarWidth }) {
         backdropFilter: 'blur(12px)',
         borderBottom: '1px solid var(--border)',
         display: 'flex', alignItems: 'center',
-        padding: '0 1.25rem', gap: 12,
+        padding: '0 1rem', gap: isMobile ? 8 : 12,
         transition: 'left 0.25s ease',
+        minWidth: 0,
       }}>
+        {/* Hamburger on mobile */}
+        {isMobile && (
+          <button
+            onClick={onMenuClick}
+            style={{
+              background: 'none', border: 'none', cursor: 'pointer',
+              color: 'var(--text-2)', padding: 8, borderRadius: 8,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              flexShrink: 0, minWidth: 36, minHeight: 36,
+            }}
+            aria-label="Open menu"
+          >
+            <Menu size={20} />
+          </button>
+        )}
+
         {/* Page title */}
         <h1 style={{
-          margin: 0, fontSize: '1rem', fontWeight: 600, color: 'var(--text-1)',
+          margin: 0,
+          fontSize: isMobile ? '0.875rem' : '1rem',
+          fontWeight: 600, color: 'var(--text-1)',
           fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap',
+          overflow: 'hidden', textOverflow: 'ellipsis',
+          flexShrink: 1, minWidth: 0,
+          maxWidth: isMobile ? 120 : 'none',
         }}>
           {pageTitle}
         </h1>
 
-        {/* Search */}
-        <button
-          onClick={() => setShowPalette(true)}
-          style={{
-            flex: 1, maxWidth: 400, display: 'flex', alignItems: 'center', gap: 8,
-            background: 'var(--input-bg)', border: '1px solid var(--border)', borderRadius: '0.5rem',
-            padding: '0.4rem 0.75rem', cursor: 'text',
-            color: 'var(--text-3)', fontSize: '0.875rem',
-          }}
-        >
-          <Search size={14} />
-          <span style={{ flex: 1, textAlign: 'left' }}>Search everything...</span>
-          <span style={{
-            fontSize: '0.7rem', padding: '1px 6px', borderRadius: 4,
-            background: 'var(--surface-el)', border: '1px solid var(--border)', color: 'var(--text-3)',
-          }}>
-            Ctrl K
-          </span>
-        </button>
+        {/* Search — hidden on mobile */}
+        {!isMobile && (
+          <button
+            onClick={() => setShowPalette(true)}
+            style={{
+              flex: 1, maxWidth: 400, display: 'flex', alignItems: 'center', gap: 8,
+              background: 'var(--input-bg)', border: '1px solid var(--border)', borderRadius: '0.5rem',
+              padding: '0.4rem 0.75rem', cursor: 'text',
+              color: 'var(--text-3)', fontSize: '0.875rem',
+            }}
+          >
+            <Search size={14} />
+            <span style={{ flex: 1, textAlign: 'left' }}>Search everything...</span>
+            <span style={{
+              fontSize: '0.7rem', padding: '1px 6px', borderRadius: 4,
+              background: 'var(--surface-el)', border: '1px solid var(--border)', color: 'var(--text-3)',
+            }}>
+              Ctrl K
+            </span>
+          </button>
+        )}
 
         <div style={{ flex: 1 }} />
+
+        {/* Search icon on mobile */}
+        {isMobile && (
+          <button
+            onClick={() => setShowPalette(true)}
+            style={{
+              background: 'none', border: 'none', cursor: 'pointer',
+              color: 'var(--text-2)', padding: 8, borderRadius: 8,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              flexShrink: 0, minWidth: 36, minHeight: 36,
+            }}
+            aria-label="Search"
+          >
+            <Search size={18} />
+          </button>
+        )}
 
         {/* Theme toggle */}
         <button
@@ -139,7 +178,8 @@ export function Topbar({ sidebarWidth }) {
             background: 'var(--surface-el)', border: '1px solid var(--border)',
             borderRadius: 8, cursor: 'pointer', color: 'var(--text-2)',
             padding: 7, display: 'flex', alignItems: 'center', justifyContent: 'center',
-            transition: 'all 0.2s',
+            transition: 'all 0.2s', flexShrink: 0,
+            minWidth: 34, minHeight: 34,
           }}
           onMouseEnter={e => { e.currentTarget.style.background = 'var(--card-hover)'; e.currentTarget.style.color = 'var(--text-1)'; }}
           onMouseLeave={e => { e.currentTarget.style.background = 'var(--surface-el)'; e.currentTarget.style.color = 'var(--text-2)'; }}
@@ -153,6 +193,8 @@ export function Topbar({ sidebarWidth }) {
           style={{
             position: 'relative', background: 'none', border: 'none',
             cursor: 'pointer', color: 'var(--text-2)', padding: 8, borderRadius: 8,
+            flexShrink: 0, minWidth: 36, minHeight: 36,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}
           onMouseEnter={e => { e.currentTarget.style.background = 'var(--card-hover)'; e.currentTarget.style.color = 'var(--text-1)'; }}
           onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'var(--text-2)'; }}
@@ -171,23 +213,27 @@ export function Topbar({ sidebarWidth }) {
         </button>
 
         {/* User menu */}
-        <div ref={userMenuRef} style={{ position: 'relative' }}>
+        <div ref={userMenuRef} style={{ position: 'relative', flexShrink: 0 }}>
           <button
             onClick={() => { setShowUserMenu(p => !p); setShowSwitcher(false); }}
             style={{
-              display: 'flex', alignItems: 'center', gap: 8,
+              display: 'flex', alignItems: 'center', gap: isMobile ? 4 : 8,
               background: 'none', border: 'none', cursor: 'pointer',
-              padding: '4px 8px', borderRadius: 8,
+              padding: '4px 6px', borderRadius: 8,
               transition: 'background 0.2s',
             }}
-            onMouseEnter={e => e.currentTarget.style.background = '#141D2A'}
+            onMouseEnter={e => e.currentTarget.style.background = 'var(--card-hover)'}
             onMouseLeave={e => e.currentTarget.style.background = 'none'}
           >
             <Avatar name={currentUser?.name} color={currentUser?.color} size="sm" />
-            <span style={{ fontSize: '0.8rem', fontWeight: 500, color: '#e2e8f0', maxWidth: 100, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              {currentUser?.name?.split(' ')[0]}
-            </span>
-            <ChevronDown size={14} color="#64748b" />
+            {!isMobile && (
+              <>
+                <span style={{ fontSize: '0.8rem', fontWeight: 500, color: 'var(--text-1)', maxWidth: 100, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  {currentUser?.name?.split(' ')[0]}
+                </span>
+                <ChevronDown size={14} color="var(--text-3)" />
+              </>
+            )}
           </button>
 
           {showUserMenu && (

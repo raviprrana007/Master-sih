@@ -23,7 +23,7 @@ export default function FacultyProfile() {
             </div>
           </div>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginTop: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 160px), 1fr))', gap: '1rem', marginTop: '1.5rem' }}>
           {[{ icon: Users, label: 'Connections', value: currentUser?.connections || 156 },
             { icon: BookOpen, label: 'Publications', value: currentUser?.publications || 23 },
             { icon: FlaskConical, label: 'Research Projects', value: currentUser?.researchProjects || 5 }].map(s => (

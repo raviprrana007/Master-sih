@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { Eye, EyeOff, Sparkles, ArrowRight } from 'lucide-react';
 import { ROLE_CREDENTIALS } from '../../data/users';
+import { useBreakpoint } from '../../hooks/useBreakpoint';
 
 const ROLES = [
   { key: 'student', label: 'Student', color: '#3B82F6', desc: 'Find internships & grow skills' },
@@ -20,6 +21,7 @@ const STATS = [
 export default function LoginPage() {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const { isMobile } = useBreakpoint();
   const [selectedRole, setSelectedRole] = useState('student');
   const [email, setEmail] = useState(ROLE_CREDENTIALS.student.email);
   const [password, setPassword] = useState('demo123');
@@ -54,128 +56,150 @@ export default function LoginPage() {
 
   return (
     <div style={{
-      minHeight: '100vh', display: 'flex',
-      background: '#05070D', fontFamily: 'Inter, sans-serif',
+      minHeight: '100dvh',
+      display: 'flex',
+      flexDirection: isMobile ? 'column' : 'row',
+      background: '#05070D',
+      fontFamily: 'Inter, sans-serif',
     }}>
-      {/* Left panel */}
-      <div style={{
-        flex: '0 0 55%', position: 'relative',
-        background: 'linear-gradient(135deg, #05070D 0%, #0A0F18 50%, #0D1520 100%)',
-        overflow: 'hidden', display: 'flex', flexDirection: 'column',
-        alignItems: 'center', justifyContent: 'center', padding: '3rem',
-      }}
-        className="grid-pattern"
-      >
-        {/* Glow effects */}
+      {/* Left panel - hidden on mobile */}
+      {!isMobile && (
         <div style={{
-          position: 'absolute', top: '20%', left: '20%',
-          width: 300, height: 300, borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }} />
-        <div style={{
-          position: 'absolute', bottom: '20%', right: '20%',
-          width: 200, height: 200, borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }} />
+          flex: '0 0 55%', position: 'relative',
+          background: 'linear-gradient(135deg, #05070D 0%, #0A0F18 50%, #0D1520 100%)',
+          overflow: 'hidden', display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center', padding: '3rem',
+        }}
+          className="grid-pattern"
+        >
+          {/* Glow effects */}
+          <div style={{
+            position: 'absolute', top: '20%', left: '20%',
+            width: 300, height: 300, borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%)',
+            pointerEvents: 'none',
+          }} />
+          <div style={{
+            position: 'absolute', bottom: '20%', right: '20%',
+            width: 200, height: 200, borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)',
+            pointerEvents: 'none',
+          }} />
 
-        {/* Content */}
-        <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 480 }}>
-          {/* Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: '2rem' }}>
-            <div style={{
-              width: 48, height: 48, borderRadius: 14,
-              background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-              <Sparkles size={24} color="#3B82F6" />
-            </div>
-            <span style={{
-              fontSize: '2rem', fontWeight: 800, color: '#e2e8f0',
-              fontFamily: 'Inter, sans-serif',
-            }}>
-              SkillBridge
-            </span>
-          </div>
-
-          <h2 style={{
-            fontSize: '1.75rem', fontWeight: 700, color: '#e2e8f0',
-            fontFamily: 'Inter, sans-serif', margin: '0 0 0.75rem',
-          }}>
-            Where Talent Meets Opportunity
-          </h2>
-          <p style={{ fontSize: '1rem', color: '#64748b', margin: '0 0 2rem', lineHeight: 1.6 }}>
-            AI-powered career platform connecting students, industry, and academia for the future of work.
-          </p>
-
-          {/* Network SVG animation */}
-          <div style={{ position: 'relative', height: 180, marginBottom: '2rem' }}>
-            <svg width="100%" height="180" viewBox="0 0 400 180">
-              {/* Lines */}
-              <line x1="200" y1="90" x2="80" y2="40" stroke="rgba(59,130,246,0.3)" strokeWidth="1" strokeDasharray="4,4">
-                <animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" />
-              </line>
-              <line x1="200" y1="90" x2="320" y2="40" stroke="rgba(139,92,246,0.3)" strokeWidth="1" strokeDasharray="4,4">
-                <animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="2.5s" repeatCount="indefinite" />
-              </line>
-              <line x1="200" y1="90" x2="80" y2="140" stroke="rgba(16,185,129,0.3)" strokeWidth="1" strokeDasharray="4,4">
-                <animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite" />
-              </line>
-              <line x1="200" y1="90" x2="320" y2="140" stroke="rgba(6,182,212,0.3)" strokeWidth="1" strokeDasharray="4,4">
-                <animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="1.8s" repeatCount="indefinite" />
-              </line>
-              <line x1="200" y1="90" x2="350" y2="90" stroke="rgba(245,158,11,0.3)" strokeWidth="1" strokeDasharray="4,4">
-                <animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="2.2s" repeatCount="indefinite" />
-              </line>
-              {/* Center */}
-              <circle cx="200" cy="90" r="20" fill="rgba(59,130,246,0.15)" stroke="rgba(59,130,246,0.5)" strokeWidth="1.5">
-                <animate attributeName="r" values="18;22;18" dur="3s" repeatCount="indefinite" />
-              </circle>
-              <text x="200" y="95" textAnchor="middle" fill="#3B82F6" fontSize="12" fontWeight="600">SB</text>
-              {/* Nodes */}
-              {[
-                { x: 80, y: 40, c: '#3B82F6', l: 'S' },
-                { x: 320, y: 40, c: '#8B5CF6', l: 'I' },
-                { x: 80, y: 140, c: '#10B981', l: 'A' },
-                { x: 320, y: 140, c: '#06B6D4', l: 'In' },
-                { x: 350, y: 90, c: '#F59E0B', l: 'M' },
-              ].map((n, i) => (
-                <g key={i}>
-                  <circle cx={n.x} cy={n.y} r="14" fill={`${n.c}20`} stroke={`${n.c}60`} strokeWidth="1.5">
-                    <animate attributeName="r" values="12;15;12" dur={`${2 + i * 0.3}s`} repeatCount="indefinite" />
-                  </circle>
-                  <text x={n.x} y={n.y + 4} textAnchor="middle" fill={n.c} fontSize="10" fontWeight="700">{n.l}</text>
-                </g>
-              ))}
-            </svg>
-          </div>
-
-          {/* Stats */}
-          <div style={{ display: 'flex', gap: 16, justifyContent: 'center' }}>
-            {STATS.map(s => (
-              <div key={s.label} style={{
-                background: 'rgba(255,255,255,0.03)', border: '1px solid #1e293b',
-                borderRadius: '0.75rem', padding: '0.75rem 1rem', textAlign: 'center',
+          {/* Content */}
+          <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 480 }}>
+            {/* Logo */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: '2rem' }}>
+              <div style={{
+                width: 48, height: 48, borderRadius: 14,
+                background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: s.color, fontFamily: 'Inter, sans-serif' }}>
-                  {s.value}
-                </div>
-                <div style={{ fontSize: '0.7rem', color: '#475569' }}>{s.label}</div>
+                <Sparkles size={24} color="#3B82F6" />
               </div>
-            ))}
+              <span style={{
+                fontSize: '2rem', fontWeight: 800, color: '#e2e8f0',
+                fontFamily: 'Inter, sans-serif',
+              }}>
+                SkillBridge
+              </span>
+            </div>
+
+            <h2 style={{
+              fontSize: '1.75rem', fontWeight: 700, color: '#e2e8f0',
+              fontFamily: 'Inter, sans-serif', margin: '0 0 0.75rem',
+            }}>
+              Where Talent Meets Opportunity
+            </h2>
+            <p style={{ fontSize: '1rem', color: '#64748b', margin: '0 0 2rem', lineHeight: 1.6 }}>
+              AI-powered career platform connecting students, industry, and academia for the future of work.
+            </p>
+
+            {/* Network SVG animation */}
+            <div style={{ position: 'relative', height: 180, marginBottom: '2rem' }}>
+              <svg width="100%" height="180" viewBox="0 0 400 180">
+                <line x1="200" y1="90" x2="80" y2="40" stroke="rgba(59,130,246,0.3)" strokeWidth="1" strokeDasharray="4,4">
+                  <animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" />
+                </line>
+                <line x1="200" y1="90" x2="320" y2="40" stroke="rgba(139,92,246,0.3)" strokeWidth="1" strokeDasharray="4,4">
+                  <animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="2.5s" repeatCount="indefinite" />
+                </line>
+                <line x1="200" y1="90" x2="80" y2="140" stroke="rgba(16,185,129,0.3)" strokeWidth="1" strokeDasharray="4,4">
+                  <animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite" />
+                </line>
+                <line x1="200" y1="90" x2="320" y2="140" stroke="rgba(6,182,212,0.3)" strokeWidth="1" strokeDasharray="4,4">
+                  <animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="1.8s" repeatCount="indefinite" />
+                </line>
+                <line x1="200" y1="90" x2="350" y2="90" stroke="rgba(245,158,11,0.3)" strokeWidth="1" strokeDasharray="4,4">
+                  <animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="2.2s" repeatCount="indefinite" />
+                </line>
+                <circle cx="200" cy="90" r="20" fill="rgba(59,130,246,0.15)" stroke="rgba(59,130,246,0.5)" strokeWidth="1.5">
+                  <animate attributeName="r" values="18;22;18" dur="3s" repeatCount="indefinite" />
+                </circle>
+                <text x="200" y="95" textAnchor="middle" fill="#3B82F6" fontSize="12" fontWeight="600">SB</text>
+                {[
+                  { x: 80, y: 40, c: '#3B82F6', l: 'S' },
+                  { x: 320, y: 40, c: '#8B5CF6', l: 'I' },
+                  { x: 80, y: 140, c: '#10B981', l: 'A' },
+                  { x: 320, y: 140, c: '#06B6D4', l: 'In' },
+                  { x: 350, y: 90, c: '#F59E0B', l: 'M' },
+                ].map((n, i) => (
+                  <g key={i}>
+                    <circle cx={n.x} cy={n.y} r="14" fill={`${n.c}20`} stroke={`${n.c}60`} strokeWidth="1.5">
+                      <animate attributeName="r" values="12;15;12" dur={`${2 + i * 0.3}s`} repeatCount="indefinite" />
+                    </circle>
+                    <text x={n.x} y={n.y + 4} textAnchor="middle" fill={n.c} fontSize="10" fontWeight="700">{n.l}</text>
+                  </g>
+                ))}
+              </svg>
+            </div>
+
+            {/* Stats */}
+            <div style={{ display: 'flex', gap: 16, justifyContent: 'center' }}>
+              {STATS.map(s => (
+                <div key={s.label} style={{
+                  background: 'rgba(255,255,255,0.03)', border: '1px solid #1e293b',
+                  borderRadius: '0.75rem', padding: '0.75rem 1rem', textAlign: 'center',
+                }}>
+                  <div style={{ fontSize: '1.25rem', fontWeight: 700, color: s.color, fontFamily: 'Inter, sans-serif' }}>
+                    {s.value}
+                  </div>
+                  <div style={{ fontSize: '0.7rem', color: '#475569' }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
-      {/* Right panel */}
+      {/* Right panel / full panel on mobile */}
       <div style={{
-        flex: '0 0 45%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-        padding: '2rem', background: '#0A0F18',
-        borderLeft: '1px solid #1e293b',
+        flex: isMobile ? 'none' : '0 0 45%',
+        width: isMobile ? '100%' : 'auto',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: isMobile ? '2rem 1.25rem' : '2rem',
+        background: '#0A0F18',
+        borderLeft: isMobile ? 'none' : '1px solid #1e293b',
+        minHeight: isMobile ? '100dvh' : 'auto',
       }}>
         <div style={{ width: '100%', maxWidth: 420 }}>
-          <h2 style={{ margin: '0 0 0.5rem', fontSize: '1.5rem', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
+          {/* Mobile: show compact logo */}
+          {isMobile && (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: '2rem' }}>
+              <div style={{
+                width: 36, height: 36, borderRadius: 10,
+                background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <Sparkles size={18} color="#3B82F6" />
+              </div>
+              <span style={{ fontSize: '1.5rem', fontWeight: 800, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
+                SkillBridge
+              </span>
+            </div>
+          )}
+
+          <h2 style={{ margin: '0 0 0.5rem', fontSize: 'clamp(1.25rem, 4vw, 1.5rem)', fontWeight: 700, color: '#e2e8f0', fontFamily: 'Inter, sans-serif' }}>
             Welcome back
           </h2>
           <p style={{ margin: '0 0 2rem', fontSize: '0.875rem', color: '#64748b' }}>
@@ -288,22 +312,13 @@ export default function LoginPage() {
             <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#3B82F6', marginBottom: 6 }}>
               Demo Credentials (auto-filled)
             </div>
-            <div style={{ fontSize: '0.75rem', color: '#64748b', fontFamily: 'JetBrains Mono, monospace' }}>
+            <div style={{ fontSize: '0.75rem', color: '#64748b', fontFamily: 'JetBrains Mono, monospace', wordBreak: 'break-all' }}>
               Email: {email}<br />
               Password: demo123
             </div>
           </div>
         </div>
       </div>
-
-      {/* Mobile: stack vertically */}
-      <style>{`
-        @media (max-width: 768px) {
-          .login-panels { flex-direction: column !important; }
-          .login-left { flex: none !important; padding: 2rem !important; }
-          .login-right { flex: none !important; }
-        }
-      `}</style>
     </div>
   );
 }

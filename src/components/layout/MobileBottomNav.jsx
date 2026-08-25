@@ -54,13 +54,16 @@ export function MobileBottomNav() {
 
   return (
     <div style={{
-      position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 50,
-      background: 'rgba(10, 15, 24, 0.95)',
-      borderTop: '1px solid #1e293b',
+      position: 'fixed',
+      bottom: 0, left: 0, right: 0,
+      height: `calc(56px + env(safe-area-inset-bottom))`,
+      paddingBottom: 'env(safe-area-inset-bottom)',
+      background: 'var(--sidebar-bg)',
+      borderTop: '1px solid var(--border)',
       backdropFilter: 'blur(12px)',
-      display: 'flex', alignItems: 'center',
-      padding: '0.5rem 0',
-      paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))',
+      display: 'flex', alignItems: 'flex-start', justifyContent: 'space-around',
+      zIndex: 80,
+      paddingTop: 0,
     }}>
       {nav.map(item => {
         const active = isActive(item.path);
@@ -71,15 +74,17 @@ export function MobileBottomNav() {
             onClick={() => navigate(item.path)}
             style={{
               flex: 1, display: 'flex', flexDirection: 'column',
-              alignItems: 'center', gap: 4, padding: '0.25rem 0',
+              alignItems: 'center', gap: 4,
+              padding: '8px 4px',
+              minHeight: 44, minWidth: 44,
               background: 'none', border: 'none', cursor: 'pointer',
-              color: active ? '#3B82F6' : '#64748b',
+              color: active ? 'var(--accent)' : 'var(--text-3)',
               transition: 'color 0.2s',
             }}
           >
             <div style={{
               width: 36, height: 28, borderRadius: 8,
-              background: active ? 'rgba(59,130,246,0.15)' : 'transparent',
+              background: active ? 'var(--accent-light)' : 'transparent',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               transition: 'background 0.2s',
             }}>
