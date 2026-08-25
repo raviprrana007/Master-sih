@@ -51,7 +51,7 @@ const PAGE_TITLES = {
 
 export function Topbar({ sidebarWidth }) {
   const { currentUser, logout } = useAuth();
-  const { unreadCount } = useApp();
+  const { unreadCount, theme, setTheme } = useApp();
   const navigate = useNavigate();
   const location = useLocation();
   const [showUserMenu, setShowUserMenu] = useState(false);
@@ -94,16 +94,16 @@ export function Topbar({ sidebarWidth }) {
         position: 'fixed', top: 0, right: 0,
         left: sidebarWidth,
         height: 60, zIndex: 50,
-        background: 'rgba(10, 15, 24, 0.8)',
+        background: 'var(--topbar-bg)',
         backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid #1e293b',
+        borderBottom: '1px solid var(--border)',
         display: 'flex', alignItems: 'center',
         padding: '0 1.25rem', gap: 12,
         transition: 'left 0.25s ease',
       }}>
         {/* Page title */}
         <h1 style={{
-          margin: 0, fontSize: '1rem', fontWeight: 600, color: '#e2e8f0',
+          margin: 0, fontSize: '1rem', fontWeight: 600, color: 'var(--text-1)',
           fontFamily: 'Syne, sans-serif', whiteSpace: 'nowrap',
         }}>
           {pageTitle}
@@ -114,16 +114,16 @@ export function Topbar({ sidebarWidth }) {
           onClick={() => setShowPalette(true)}
           style={{
             flex: 1, maxWidth: 400, display: 'flex', alignItems: 'center', gap: 8,
-            background: '#0A0F18', border: '1px solid #1e293b', borderRadius: '0.5rem',
+            background: 'var(--input-bg)', border: '1px solid var(--border)', borderRadius: '0.5rem',
             padding: '0.4rem 0.75rem', cursor: 'text',
-            color: '#64748b', fontSize: '0.875rem',
+            color: 'var(--text-3)', fontSize: '0.875rem',
           }}
         >
           <Search size={14} />
           <span style={{ flex: 1, textAlign: 'left' }}>Search everything...</span>
           <span style={{
             fontSize: '0.7rem', padding: '1px 6px', borderRadius: 4,
-            background: '#141D2A', border: '1px solid #243044', color: '#475569',
+            background: 'var(--surface-el)', border: '1px solid var(--border)', color: 'var(--text-3)',
           }}>
             Ctrl K
           </span>
@@ -131,15 +131,31 @@ export function Topbar({ sidebarWidth }) {
 
         <div style={{ flex: 1 }} />
 
+        {/* Theme toggle */}
+        <button
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          style={{
+            background: 'var(--surface-el)', border: '1px solid var(--border)',
+            borderRadius: 8, cursor: 'pointer', color: 'var(--text-2)',
+            padding: 7, display: 'flex', alignItems: 'center', justifyContent: 'center',
+            transition: 'all 0.2s',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.background = 'var(--card-hover)'; e.currentTarget.style.color = 'var(--text-1)'; }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'var(--surface-el)'; e.currentTarget.style.color = 'var(--text-2)'; }}
+        >
+          {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+        </button>
+
         {/* Notifications */}
         <button
           onClick={() => navigate('/notifications')}
           style={{
             position: 'relative', background: 'none', border: 'none',
-            cursor: 'pointer', color: '#94a3b8', padding: 8, borderRadius: 8,
+            cursor: 'pointer', color: 'var(--text-2)', padding: 8, borderRadius: 8,
           }}
-          onMouseEnter={e => { e.currentTarget.style.background = '#141D2A'; e.currentTarget.style.color = '#e2e8f0'; }}
-          onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = '#94a3b8'; }}
+          onMouseEnter={e => { e.currentTarget.style.background = 'var(--card-hover)'; e.currentTarget.style.color = 'var(--text-1)'; }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'var(--text-2)'; }}
         >
           <Bell size={18} />
           {unreadCount > 0 && (
@@ -179,31 +195,31 @@ export function Topbar({ sidebarWidth }) {
               className="animate-fade-in"
               style={{
                 position: 'absolute', top: 'calc(100% + 8px)', right: 0,
-                background: '#0A0F18', border: '1px solid #1e293b',
+                background: 'var(--surface)', border: '1px solid var(--border)',
                 borderRadius: '0.75rem', overflow: 'hidden', minWidth: 200,
-                boxShadow: '0 10px 30px rgba(0,0,0,0.4)', zIndex: 200,
+                boxShadow: '0 10px 30px rgba(0,0,0,0.15)', zIndex: 200,
               }}
             >
-              <div style={{ padding: '0.75rem 1rem', borderBottom: '1px solid #1e293b' }}>
-                <div style={{ fontSize: '0.875rem', fontWeight: 600, color: '#e2e8f0' }}>{currentUser?.name}</div>
-                <div style={{ fontSize: '0.75rem', color: '#64748b' }}>{currentUser?.email}</div>
+              <div style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--border)' }}>
+                <div style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-1)' }}>{currentUser?.name}</div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-3)' }}>{currentUser?.email}</div>
               </div>
               <div style={{ padding: '0.5rem' }}>
                 <MenuItem icon={User} label="Profile" onClick={() => { navigate('/portfolio'); setShowUserMenu(false); }} />
                 <MenuItem icon={Settings} label="Settings" onClick={() => { navigate('/settings'); setShowUserMenu(false); }} />
-                <div style={{ margin: '0.25rem 0', height: 1, background: '#1e293b' }} />
+                <div style={{ margin: '0.25rem 0', height: 1, background: 'var(--border)' }} />
                 <MenuItem
                   icon={User}
                   label="Switch Demo User"
                   onClick={() => setShowSwitcher(p => !p)}
-                  rightEl={<ChevronDown size={12} color="#64748b" />}
+                  rightEl={<ChevronDown size={12} color="var(--text-3)" />}
                 />
                 {showSwitcher && (
                   <div style={{ marginTop: 4 }}>
                     <DemoUserSwitcher onClose={() => { setShowSwitcher(false); setShowUserMenu(false); }} />
                   </div>
                 )}
-                <div style={{ margin: '0.25rem 0', height: 1, background: '#1e293b' }} />
+                <div style={{ margin: '0.25rem 0', height: 1, background: 'var(--border)' }} />
                 <MenuItem icon={LogOut} label="Sign out" onClick={handleLogout} danger />
               </div>
             </div>
@@ -224,16 +240,16 @@ function MenuItem({ icon: Icon, label, onClick, danger, rightEl }) {
         width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         padding: '0.5rem 0.75rem', borderRadius: '0.5rem', border: 'none',
         cursor: 'pointer', background: 'transparent',
-        color: danger ? '#EF4444' : '#94a3b8', fontSize: '0.875rem',
+        color: danger ? '#EF4444' : 'var(--text-2)', fontSize: '0.875rem',
         transition: 'all 0.15s', fontFamily: 'Plus Jakarta Sans, sans-serif',
       }}
       onMouseEnter={e => {
-        e.currentTarget.style.background = danger ? 'rgba(239,68,68,0.1)' : '#141D2A';
-        e.currentTarget.style.color = danger ? '#f87171' : '#e2e8f0';
+        e.currentTarget.style.background = danger ? 'rgba(239,68,68,0.1)' : 'var(--card-hover)';
+        e.currentTarget.style.color = danger ? '#f87171' : 'var(--text-1)';
       }}
       onMouseLeave={e => {
         e.currentTarget.style.background = 'transparent';
-        e.currentTarget.style.color = danger ? '#EF4444' : '#94a3b8';
+        e.currentTarget.style.color = danger ? '#EF4444' : 'var(--text-2)';
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>

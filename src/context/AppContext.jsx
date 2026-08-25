@@ -61,7 +61,9 @@ export function AppProvider({ children }) {
     } catch { return {}; }
   });
 
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState(() => {
+    try { return localStorage.getItem('sb_theme') || 'light'; } catch { return 'light'; }
+  });
 
   // Persist to localStorage
   useEffect(() => {
@@ -87,6 +89,17 @@ export function AppProvider({ children }) {
   useEffect(() => {
     localStorage.setItem('sb_assessment_results', JSON.stringify(assessmentResults));
   }, [assessmentResults]);
+
+  // Apply theme class to <html> element
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    localStorage.setItem('sb_theme', theme);
+  }, [theme]);
 
   // Connection actions
   const connectPerson = (personId) => {

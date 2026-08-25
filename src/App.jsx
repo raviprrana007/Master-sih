@@ -62,7 +62,7 @@ function ProtectedRoute({ children }) {
   const { currentUser, loading } = useAuth();
   if (loading) {
     return (
-      <div style={{ display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center', background: '#05070D' }}>
+      <div style={{ display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-primary)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
           <div style={{ width: 40, height: 40, border: '3px solid #1e293b', borderTopColor: '#3B82F6', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
           <span style={{ color: '#64748b', fontSize: '0.875rem' }}>Loading SkillBridge...</span>

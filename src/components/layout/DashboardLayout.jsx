@@ -16,7 +16,7 @@ export default function DashboardLayout({ children }) {
   const sidebarWidth = isMobile ? 0 : sidebarCollapsed ? 64 : 256;
 
   return (
-    <div style={{ minHeight: '100vh', background: '#05070D' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--bg-primary)' }}>
       {/* Sidebar: only on non-mobile */}
       {!isMobile && (
         <Sidebar

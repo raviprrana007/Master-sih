@@ -10,13 +10,13 @@ import { useAuth } from '../../context/AuthContext';
 
 const STUDENT_NAV = [
   { section: 'OVERVIEW', items: [
-    { label: 'Dashboard', icon: LayoutDashboard, path: '/' },
+    { label: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
   ]},
   { section: 'CAREER', items: [
-    { label: 'Skill Assessment', icon: Brain, path: '/assessment' },
-    { label: 'Skill Profile', icon: BarChart3, path: '/skills' },
-    { label: 'Skill Gap', icon: TrendingUp, path: '/skill-gap' },
-    { label: 'Learning', icon: BookOpen, path: '/learning' },
+    { label: 'Skill Assessment', icon: Brain, path: '/skills/assessment' },
+    { label: 'Skill Profile', icon: BarChart3, path: '/skills/profile' },
+    { label: 'Skill Gap', icon: TrendingUp, path: '/skills/gap' },
+    { label: 'Learning', icon: BookOpen, path: '/skills/learning' },
     { label: 'Career Intelligence', icon: Sparkles, path: '/career-ai' },
   ]},
   { section: 'OPPORTUNITIES', items: [
@@ -26,14 +26,14 @@ const STUDENT_NAV = [
     { label: 'Saved', icon: Bookmark, path: '/saved' },
   ]},
   { section: 'NETWORK', items: [
-    { label: 'Discover', icon: Compass, path: '/discover' },
-    { label: 'My Network', icon: Users, path: '/network' },
-    { label: 'Mentors', icon: GraduationCap, path: '/mentors' },
+    { label: 'Discover', icon: Compass, path: '/network/discover' },
+    { label: 'My Network', icon: Users, path: '/network/connections' },
+    { label: 'Mentors', icon: GraduationCap, path: '/network/mentors' },
     { label: 'Messages', icon: MessageSquare, path: '/messages' },
   ]},
   { section: 'COLLABORATION', items: [
-    { label: 'Live Projects', icon: Code2, path: '/projects' },
-    { label: 'Workshops', icon: Presentation, path: '/workshops' },
+    { label: 'Live Projects', icon: Code2, path: '/collaborate/projects' },
+    { label: 'Workshops', icon: Presentation, path: '/collaborate/workshops' },
   ]},
   { section: 'COMMUNITY', items: [
     { label: 'Feed', icon: Rss, path: '/feed' },
@@ -45,7 +45,7 @@ const STUDENT_NAV = [
 
 const INDUSTRY_NAV = [
   { section: 'OVERVIEW', items: [
-    { label: 'Dashboard', icon: LayoutDashboard, path: '/' },
+    { label: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
   ]},
   { section: 'JOBS & INTERNSHIPS', items: [
     { label: 'Manage Jobs', icon: Building2, path: '/manage-jobs' },
@@ -55,7 +55,7 @@ const INDUSTRY_NAV = [
   { section: 'TALENT', items: [
     { label: 'Applications', icon: FileText, path: '/applications' },
     { label: 'Discover Candidates', icon: Search, path: '/candidates' },
-    { label: 'Talent Network', icon: Network, path: '/talent-network' },
+    { label: 'Talent Network', icon: Network, path: '/talent' },
   ]},
   { section: 'COMMUNICATION', items: [
     { label: 'Messages', icon: MessageSquare, path: '/messages' },
@@ -70,10 +70,10 @@ const INDUSTRY_NAV = [
 
 const ACADEMICIAN_NAV = [
   { section: 'OVERVIEW', items: [
-    { label: 'Dashboard', icon: LayoutDashboard, path: '/' },
+    { label: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
   ]},
   { section: 'OPPORTUNITIES', items: [
-    { label: 'Faculty Internships', icon: Briefcase, path: '/faculty-internships' },
+    { label: 'Faculty Internships', icon: Briefcase, path: '/internships' },
     { label: 'FDP Programs', icon: Presentation, path: '/fdp' },
     { label: 'Consultancy', icon: Building2, path: '/consultancy' },
     { label: 'Research', icon: FlaskConical, path: '/research' },
@@ -91,11 +91,11 @@ const ACADEMICIAN_NAV = [
 
 const INSTITUTION_NAV = [
   { section: 'OVERVIEW', items: [
-    { label: 'Dashboard', icon: LayoutDashboard, path: '/' },
+    { label: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
   ]},
   { section: 'ANALYTICS', items: [
-    { label: 'Placement Analytics', icon: BarChart2, path: '/placement-analytics' },
-    { label: 'Skill Analytics', icon: TrendingUp, path: '/skill-analytics' },
+    { label: 'Placement Analytics', icon: BarChart2, path: '/analytics/placement' },
+    { label: 'Skill Analytics', icon: TrendingUp, path: '/analytics/skills' },
   ]},
   { section: 'MANAGEMENT', items: [
     { label: 'Student Directory', icon: Users, path: '/students' },
@@ -123,16 +123,16 @@ export function Sidebar({ collapsed, onToggle }) {
   const roleColor = roleColors[currentUser?.role] || '#3B82F6';
 
   const isActive = (path) => {
-    if (path === '/') return location.pathname === '/';
-    return location.pathname.startsWith(path);
+    if (path === '/dashboard') return location.pathname === '/dashboard' || location.pathname === '/';
+    return location.pathname === path;
   };
 
   return (
     <div style={{
       position: 'fixed', left: 0, top: 0, height: '100vh',
       width: collapsed ? 64 : 256,
-      background: '#0A0F18',
-      borderRight: '1px solid #1e293b',
+      background: 'var(--sidebar-bg)',
+      borderRight: '1px solid var(--border)',
       display: 'flex', flexDirection: 'column',
       transition: 'width 0.25s ease',
       zIndex: 100, overflow: 'hidden',
@@ -141,7 +141,7 @@ export function Sidebar({ collapsed, onToggle }) {
       <div style={{
         height: 60, display: 'flex', alignItems: 'center',
         padding: collapsed ? '0 16px' : '0 20px',
-        borderBottom: '1px solid #1e293b',
+        borderBottom: '1px solid var(--border)',
         gap: 12, flexShrink: 0,
         justifyContent: collapsed ? 'center' : 'space-between',
       }}>
@@ -154,7 +154,7 @@ export function Sidebar({ collapsed, onToggle }) {
             <Sparkles size={14} color={roleColor} />
           </div>
           {!collapsed && (
-            <span style={{ fontSize: '1rem', fontWeight: 800, color: '#e2e8f0', fontFamily: 'Syne, sans-serif', whiteSpace: 'nowrap' }}>
+            <span style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-1)', fontFamily: 'Syne, sans-serif', whiteSpace: 'nowrap' }}>
               SkillBridge
             </span>
           )}
@@ -170,12 +170,12 @@ export function Sidebar({ collapsed, onToggle }) {
             style={{
               position: 'absolute', right: -12, top: '50%', transform: 'translateY(-50%)',
               width: 24, height: 24, borderRadius: '50%',
-              background: '#141D2A', border: '1px solid #1e293b',
+              background: 'var(--surface-el)', border: '1px solid var(--border)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               cursor: 'pointer', zIndex: 10,
             }}
           >
-            <ChevronRight size={12} color="#64748b" />
+            <ChevronRight size={12} color="var(--text-3)" />
           </button>
         )}
       </div>
@@ -214,7 +214,7 @@ export function Sidebar({ collapsed, onToggle }) {
 
       {/* Bottom */}
       <div style={{
-        borderTop: '1px solid #1e293b', padding: '12px 8px', flexShrink: 0,
+        borderTop: '1px solid var(--border)', padding: '12px 8px', flexShrink: 0,
       }}>
         <button
           onClick={() => navigate('/settings')}
